@@ -6,10 +6,10 @@ import java.io.*;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLPeerUnverifiedException;
 
-public class HttpsClient {
+public class Main {
 	
    public static void main(String[] args) {
-        new HttpsClient().testIt();
+        new Main().testIt();
    }
 	
    private void testIt(){
