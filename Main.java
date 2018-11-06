@@ -2,6 +2,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.cert.Certificate;
 import java.io.*;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLPeerUnverifiedException;
@@ -15,25 +16,29 @@ public class Main {
    private void testIt(){
 
       String https_url = System.getenv("URL");
+      	System.out.println("URL : " + https_url);
 
-      URL url;
-      try {
+      while(true) {
+        URL url;
+        try {
 
-	     url = new URL(https_url);
-	     HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
-			
-	     //dumpl all cert info
-	     print_https_cert(con);
-			
-	     //dump all the content
-	     print_content(con);
-			
-      } catch (MalformedURLException e) {
-	     e.printStackTrace();
-      } catch (IOException e) {
-	     e.printStackTrace();
+            url = new URL(https_url);
+            HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
+                
+            //dumpl all cert info
+            print_https_cert(con);
+                
+            //dump all the content
+            print_content(con);
+                
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        TimeUnit.MINUTES.sleep(1);
       }
-
    }
 	
    private void print_https_cert(HttpsURLConnection con){
