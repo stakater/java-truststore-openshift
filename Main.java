@@ -30,14 +30,16 @@ public class Main {
                 
             //dump all the content
             print_content(con);
+
+            TimeUnit.MINUTES.sleep(1);
                 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        TimeUnit.MINUTES.sleep(1);
       }
    }
 	
